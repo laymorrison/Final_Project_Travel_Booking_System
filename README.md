@@ -2,7 +2,7 @@
 
 * Laymoni Morrison
 * Email: lamorrison@chapman.edu
-* Course: CPSC_408
+* Course: CPSC 408
 * Link to demo video: 
 
 ## Files Included
