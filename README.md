@@ -25,9 +25,7 @@
      pip install flask mysql-connector-python
 
 2. Database Setup:
-   - Create the database using Travel_Booking_Database_Final_Project.sql:
-     mysql -u [username] -p < database_setup.sql
-   - Replace [username] with your MySQL username.
+   - Create the database using Travel_Booking_Database_Final_Project.sql
 
 3. Run the Application:
    - Start the Flask app:
