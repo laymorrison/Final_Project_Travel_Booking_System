@@ -3,7 +3,7 @@
 * Laymoni Morrison
 * Email: lamorrison@chapman.edu
 * Course: CPSC 408
-* Link to demo video: 
+* Link to demo video: https://youtu.be/Obnc9hQmzbk
 
 ## Files Included
 1. app.py: Main Flask application.
