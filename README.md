@@ -7,26 +7,26 @@
 * Link to demo video: https://youtu.be/Obnc9hQmzbk
 
 ## Files Included
-1. **`app.py`**: Main Flask application.
+1. app.py: Main Flask application.
 
 ### **Templates**
-Located in the `templates/` folder:
-1. **`base.html`**: Base layout for consistent styling across pages.
-2. **`index.html`**: User management interface.
-3. **`flights.html`**: Manage flights.
-4. **`hotels.html`**: Manage hotels.
-5. **`car_rentals.html`**: Manage car rentals.
-6. **`bookings.html`**: Manage bookings.
-7. **`payments.html`**: Manage payments.
-8. **`search_all.html`**: Search functionality for flights, hotels, and car rentals.
-9. **`view_cart.html`**: View selected items in the cart.
-10. **`checkout_confirmation.html`**: Display a confirmation message after checkout.
-11. **`most_booked_destinations.html`**: Report for most booked destinations.
-12. **`revenue_by_airline.html`**: Report for revenue by airline.
+Located in the templates/ folder:
+1. base.html: Base layout for consistent styling across pages.
+2. index.html: User management interface.
+3. flights.html: Manage flights.
+4. hotels.html: Manage hotels.
+5. car_rentals.html: Manage car rentals.
+6. bookings.html: Manage bookings.
+7. payments.html: Manage payments.
+8. search_all.html: Search functionality for flights, hotels, and car rentals.
+9. view_cart.html: View selected items in the cart.
+10. checkout_confirmation.html: Display a confirmation message after checkout.
+11. most_booked_destinations.html: Report for most booked destinations.
+12. revenue_by_airline.html: Report for revenue by airline.
 
 ### **Static Files**
-Located in the `static/` folder:
-1. **`static.css`**: Custom styles for the project.
+Located in the static/ folder:
+1. static.css: Custom styles for the project.
 
 ### Database
 4. Travel_Booking_Database_Final_Project.sql: SQL scripts for creating tables, views, and inserting sample data.
