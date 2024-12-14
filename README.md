@@ -13,8 +13,8 @@
    - flights.html, hotels.html, car_rentals.html: Manage flights, hotels, and car rentals.
    - bookings.html, payments.html: Manage bookings and payments.
    - most_booked_destinations.html, revenue_by_airline.html: Report pages.
-3. static/: CSS and JavaScript files (if applicable).
-4. database_setup.sql: SQL scripts for creating tables, views, and inserting sample data.
+3. static/: CSS file
+4. Travel_Booking_Database_Final_Project.sql: SQL scripts for creating tables, views, and inserting sample data.
 
 ---
 
@@ -25,7 +25,7 @@
      pip install flask mysql-connector-python
 
 2. Database Setup:
-   - Create the database using database_setup.sql:
+   - Create the database using Travel_Booking_Database_Final_Project.sql:
      mysql -u [username] -p < database_setup.sql
    - Replace [username] with your MySQL username.
 
@@ -47,5 +47,11 @@
 
 ---
 
+## Resources
+- Class Lectures/Projects
+- https://www.w3schools.com/html/html_attributes.asp
+- https://www.w3schools.com/mysql/mysql_delete.asp
+- https://python-adv-web-apps.readthedocs.io/en/latest/flask_db1.html
+
 ## Note
-While some UI elements differ slightly from the original plan, the project fulfills all requirements, including views, joins, subqueries, and transaction management.
+While some UI elements differ slightly from my original plan, the project fulfills all requirements, including views, joins, subqueries, and transaction management.
