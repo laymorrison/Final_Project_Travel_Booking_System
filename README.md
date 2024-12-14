@@ -2,6 +2,7 @@
 
 * Laymoni Morrison
 * Email: lamorrison@chapman.edu
+* Student ID: 2420236
 * Course: CPSC 408
 * Link to demo video: https://youtu.be/Obnc9hQmzbk
 
