@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Search All</h1>
+
+    <!-- Search Form -->
+    <form method="POST" action="/search_all" class="mb-4">
+        <div class="row mb-3">
+            <div class="col">
+                <input type="text" name="origin" class="form-control" placeholder="Origin (e.g., Seattle)">
+            </div>
+            <div class="col">
+                <input type="text" name="destination" class="form-control" placeholder="Destination (e.g., Los Angeles)">
+            </div>
+            <div class="col">
+                <input type="number" name="min_price" class="form-control" placeholder="Min Price">
+            </div>
+            <div class="col">
+                <input type="number" name="max_price" class="form-control" placeholder="Max Price">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <!-- Flights Results -->
+    {% if flights %}
+    <h2 class="mt-4">Flights</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Airline</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for flight in flights %}
+            <tr>
+                <td>{{ flight.flight_id }}</td>
+                <td>{{ flight.airline_name }}</td>
+                <td>{{ flight.origin }}</td>
+                <td>{{ flight.destination }}</td>
+                <td>{{ flight.price }}</td>
+                <td>
+                    <form method="POST" action="/add_to_cart">
+                        <input type="hidden" name="item_type" value="Flight">
+                        <input type="hidden" name="item_id" value="{{ flight.flight_id }}">
+                        <input type="hidden" name="item_name" value="{{ flight.airline_name }}">
+                        <input type="hidden" name="item_price" value="{{ flight.price }}">
+                        <button type="submit" class="btn btn-primary btn-sm">Add to Cart</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    <!-- Car Rentals Results -->
+    {% if car_rentals %}
+    <h2 class="mt-4">Car Rentals</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Company Name</th>
+                <th>Car Type</th>
+                <th>Price Per Day</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for car_rental in car_rentals %}
+            <tr>
+                <td>{{ car_rental.car_rental_id }}</td>
+                <td>{{ car_rental.company_name }}</td>
+                <td>{{ car_rental.car_type }}</td>
+                <td>{{ car_rental.price_per_day }}</td>
+                <td>
+                    <form method="POST" action="/add_to_cart">
+                        <input type="hidden" name="item_type" value="Car Rental">
+                        <input type="hidden" name="item_id" value="{{ car_rental.car_rental_id }}">
+                        <input type="hidden" name="item_name" value="{{ car_rental.company_name }}">
+                        <input type="hidden" name="item_price" value="{{ car_rental.price_per_day }}">
+                        <button type="submit" class="btn btn-primary btn-sm">Add to Cart</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    <!-- Hotels Results -->
+    {% if hotels %}
+    <h2 class="mt-4">Hotels</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Price Per Night</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for hotel in hotels %}
+            <tr>
+                <td>{{ hotel.hotel_id }}</td>
+                <td>{{ hotel.hotel_name }}</td>
+                <td>{{ hotel.location }}</td>
+                <td>{{ hotel.price_per_night }}</td>
+                <td>
+                    <form method="POST" action="/add_to_cart">
+                        <input type="hidden" name="item_type" value="Hotel">
+                        <input type="hidden" name="item_id" value="{{ hotel.hotel_id }}">
+                        <input type="hidden" name="item_name" value="{{ hotel.hotel_name }}">
+                        <input type="hidden" name="item_price" value="{{ hotel.price_per_night }}">
+                        <button type="submit" class="btn btn-primary btn-sm">Add to Cart</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}

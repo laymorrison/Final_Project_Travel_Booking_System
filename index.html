@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">User Management</h1>
+
+    <div class="d-flex justify-content-end mb-3">
+        <a href="/download_csv/User" class="btn btn-secondary">Export Users to CSV</a>
+    </div>
+
+    <!-- Add User Form -->
+    <form method="POST" action="/add_user" class="mb-4">
+        <div class="row mb-3">
+            <div class="col">
+                <input type="text" name="name" class="form-control" placeholder="Name" required>
+            </div>
+            <div class="col">
+                <input type="email" name="email" class="form-control" placeholder="Email" required>
+            </div>
+            <div class="col">
+                <input type="text" name="phone" class="form-control" placeholder="Phone">
+            </div>
+            <div class="col">
+                <input type="date" name="dob" class="form-control" placeholder="Date of Birth">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Add User</button>
+    </form>
+
+    <!-- Users Table -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Date of Birth</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.user_id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.phone_number }}</td>
+                <td>{{ user.date_of_birth }}</td>
+                <td>{{ user.created_at }}</td>
+                <td>
+                    <form method="POST" action="/delete_user/{{ user.user_id }}">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

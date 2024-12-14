@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Manage Payments</h1>
+
+    <!-- Payments Table -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Booking</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Booking Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for payment in payments %}
+            <tr>
+                <td>{{ payment.payment_id }}</td>
+                <td>{{ payment.booking_id }}</td>
+                <td>${{ "%.2f"|format(payment.amount) }}</td>
+                <td>{{ payment.status }}</td>
+                <td>{{ payment.booking_status }}</td>
+                <td>
+                    <form method="POST" action="/update_payment/{{ payment.payment_id }}">
+                        <select name="status" class="form-control">
+                            <option value="pending" {% if payment.status == 'pending' %}selected{% endif %}>Pending</option>
+                            <option value="completed" {% if payment.status == 'completed' %}selected{% endif %}>Completed</option>
+                            <option value="refunded" {% if payment.status == 'refunded' %}selected{% endif %}>Refunded</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary btn-sm mt-2">Update</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

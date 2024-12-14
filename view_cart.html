@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">View Cart</h1>
+
+    <!-- Success Message -->
+    {% if request.args.get('success') == '1' %}
+    <div id="success-message" class="alert alert-success">
+        Great, you're all set! Have a great trip!
+    </div>
+    <script>
+        // Hide the success message after 5 seconds
+        setTimeout(function() {
+            document.getElementById('success-message').style.display = 'none';
+        }, 5000);
+    </script>
+    {% endif %}
+
+    {% if cart %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Type</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ item.type }}</td>
+                <td>{{ item.name }}</td>
+                <td>${{ item.price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3 class="mt-4">Total: ${{ total_price }}</h3>
+    <form method="POST" action="/checkout">
+        <input type="hidden" name="user_id" value="1"> 
+        <button type="submit" class="btn btn-success mt-3">Checkout</button>
+    </form>    
+    {% else %}
+    <p>Your cart is empty.</p>
+    {% endif %}
+</div>
+{% endblock %}

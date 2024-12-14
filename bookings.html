@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Manage Bookings</h1>
+
+    <!-- Filter Bookings by Status -->
+    <form method="GET" action="/bookings" class="mb-4">
+        <select name="status" class="form-select w-25 d-inline-block">
+            <option value="all" {% if request.args.get('status') == 'all' %}selected{% endif %}>All</option>
+            <option value="confirmed" {% if request.args.get('status') == 'confirmed' %}selected{% endif %}>Confirmed</option>
+            <option value="pending" {% if request.args.get('status') == 'pending' %}selected{% endif %}>Pending</option>
+            <option value="canceled" {% if request.args.get('status') == 'canceled' %}selected{% endif %}>Canceled</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
+    
+
+    <!-- Bookings Table -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>User</th>
+                <th>Flight</th>
+                <th>Hotel</th>
+                <th>Car Rental</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.booking_id }}</td>
+                <td>{{ booking.user_name }}</td>
+                <td>{{ booking.flight_name or 'N/A' }}</td>
+                <td>{{ booking.hotel_name or 'N/A' }}</td>
+                <td>{{ booking.car_rental_name or 'N/A' }}</td>
+                <td>{{ booking.status }}</td>
+                <td>
+                    <form method="POST" action="/update_booking/{{ booking.booking_id }}">
+                        <select name="status" class="form-control">
+                            <option value="pending" {% if booking.status == 'pending' %}selected{% endif %}>Pending</option>
+                            <option value="confirmed" {% if booking.status == 'confirmed' %}selected{% endif %}>Confirmed</option>
+                            <option value="canceled" {% if booking.status == 'canceled' %}selected{% endif %}>Canceled</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary btn-sm mt-2">Update</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Most Booked Destinations</h1>
+
+    {% if destinations %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Destination</th>
+                <th>Booking Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for destination in destinations %}
+            <tr>
+                <td>{{ destination.destination }}</td>
+                <td>{{ destination.booking_count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No bookings found for any destination.</p>
+    {% endif %}
+</div>
+{% endblock %}

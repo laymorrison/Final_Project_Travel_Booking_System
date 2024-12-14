@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Flight Management</h1>
+
+    <div class="d-flex justify-content-end mb-3">
+        <a href="/download_csv/Flight" class="btn btn-secondary">Export Flights to CSV</a>
+    </div>
+
+    <!-- Add Flight Form -->
+    <form method="POST" action="/add_flight" class="mb-4">
+        <div class="row mb-3">
+            <div class="col">
+                <input type="text" name="airline_name" class="form-control" placeholder="Airline Name" required>
+            </div>
+            <div class="col">
+                <input type="datetime-local" name="departure_time" class="form-control" placeholder="Departure Time" required>
+            </div>
+            <div class="col">
+                <input type="datetime-local" name="arrival_time" class="form-control" placeholder="Arrival Time" required>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <input type="text" name="origin" class="form-control" placeholder="Origin" required>
+            </div>
+            <div class="col">
+                <input type="text" name="destination" class="form-control" placeholder="Destination" required>
+            </div>
+            <div class="col">
+                <input type="number" name="price" class="form-control" placeholder="Price" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Flight</button>
+    </form>
+
+    <!-- Flights Table -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Airline</th>
+                <th>Departure</th>
+                <th>Arrival</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for flight in flights %}
+            <tr>
+                <td>{{ flight.flight_id }}</td>
+                <td>{{ flight.airline_name }}</td>
+                <td>{{ flight.departure_time }}</td>
+                <td>{{ flight.arrival_time }}</td>
+                <td>{{ flight.origin }}</td>
+                <td>{{ flight.destination }}</td>
+                <td>{{ flight.price }}</td>                             
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
